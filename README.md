@@ -29,7 +29,7 @@ Steps taken:
 
 7. Run a test event on Lambda. No need for payload, `lambda.py` just defaults to static input files if nothing is provided.
 
-		(venv) √ audio-lambda (main) $ python lambda.py|more
+		(venv) $ python lambda.py
 		100%|███████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 10.22it/s]
 		{'statusCode': 200, 'result_file': 'SUQzBAAAAAAAI1RTU0UA......'}
 
