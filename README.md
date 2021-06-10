@@ -15,7 +15,7 @@ Steps taken:
 		mv lambda.pkg.zip ../../../../
 		cd ../../../..
 
-3B. Add the actual lambda script:
+	And add the actual lambda script:
 
 		zip -g lambda.pkg.zip lambda.py
 
