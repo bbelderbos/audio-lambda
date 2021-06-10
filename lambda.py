@@ -1,5 +1,6 @@
-from urllib.request import urlretrieve
+from base64 import b64encode
 from pathlib import Path
+from urllib.request import urlretrieve
 
 from audio_program_generator import apg
 
@@ -35,8 +36,13 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'result_file': audio_gen.save_file
+        'result_file': encode(audio_gen.save_file)
     }
+
+
+def encode(file):
+    with open(file, 'rb') as f:
+        return b64encode(f.read()).decode('utf-8')
 
 
 if __name__ == "__main__":
