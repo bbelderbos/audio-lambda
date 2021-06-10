@@ -23,3 +23,5 @@ Steps taken:
 6. When doing so you also need to set `PYTHONPATH` to `$PYTHONPATH:/opt/python` under Lambda _Configuration_ > _Env variables_ (I also gave it 256 MB and a timeout of 2 minutes, and changed _Handler_ to `lambda.lambda_handler` under _Runtime settings_).
 
 7. Run a test event on Lambda. No need for payload, `lambda.py` just defaults to static input files if nothing is provided.
+
+TODO: run it through API gateway
