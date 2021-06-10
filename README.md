@@ -20,6 +20,6 @@ Steps taken:
 
 5. Add [this _ffmpeg_ layer](https://github.com/serverlesspub/ffmpeg-aws-lambda-layer) via [this option](https://serverlessrepo.aws.amazon.com/applications/arn:aws:serverlessrepo:us-east-1:145266761615:applications~ffmpeg-lambda-layer). This got me this ARN: `arn:aws:lambda:us-east-2:825951402381:layer:ffmpeg:1`
 
-6. When doing so you also need to set `PYTHONPATH` to `$PYTHONPATH:/opt/python` under Lambda Configuration > Env variables (I also gave it 256 MB and a timeout of 2 minutes).
+6. When doing so you also need to set `PYTHONPATH` to `$PYTHONPATH:/opt/python` under Lambda _Configuration_ > _Env variables_ (I also gave it 256 MB and a timeout of 2 minutes, and changed _Handler_ to `lambda.lambda_handler` under _Runtime settings_).
 
 7. Run a test event on Lambda. No need for payload, `lambda.py` just defaults to static input files if nothing is provided.
