@@ -31,12 +31,12 @@ def lambda_handler(event, context):
         )
         audio_gen.invoke()
         return {
-            'statusCode': 200,
+            'status_code': 200,
             'result_file': encode(audio_gen.save_file)
         }
     except Exception as exc:
         return {
-            'statusCode': 400,
+            'status_code': 400,
             'exception': str(exc)
         }
 
