@@ -26,18 +26,23 @@ def lambda_handler(event, context):
     to_mix = event.get("to_mix", True)
     attenuation = event.get("attenuation", 10)
 
-    audio_gen = apg.AudioProgramGenerator(
-        local_phrase_file,
-        to_mix,
-        local_sound_file,
-        attenuation,
-    )
-    audio_gen.invoke()
-
-    return {
-        'statusCode': 200,
-        'result_file': encode(audio_gen.save_file)
-    }
+    try:
+        audio_gen = apg.AudioProgramGenerator(
+            local_phrase_file,
+            to_mix,
+            local_sound_file,
+            attenuation,
+        )
+        audio_gen.invoke()
+        return {
+            'statusCode': 200,
+            'result_file': encode(audio_gen.save_file)
+        }
+    except Exception as exc:
+        return {
+            'statusCode': 400,
+            'exception': str(exc)
+        }
 
 
 def encode(file):
