@@ -4,27 +4,23 @@ from urllib.request import urlretrieve
 
 from audio_program_generator import apg
 
-BUCKET = (
-    ("https://pb-audio-generator.s3.us-east-2"
-     ".amazonaws.com"))
-DEFAULT_PHRASE_FILE = f"{BUCKET}/phrase_file.txt"
-DEFAULT_SOUND_FILE = f"{BUCKET}/birds.wav"
 TMP = Path("/tmp")
 
 
 def lambda_handler(event, context):
-    phrase_file = event.get("phrase_file", DEFAULT_PHRASE_FILE)
+    phrase_file = event["phrase_file"]
+    sound_file = event["sound_file"]
+    mix = event.get("to_mix", False)
+    to_mix = str(mix).lower() == "true"  # convert JSON to bool
+    attenuation = event.get("attenuation", 0)
+
     local_phrase_file = TMP / "phrase_file"
     if not local_phrase_file.exists():
         urlretrieve(phrase_file, local_phrase_file)
 
-    sound_file = event.get("sound_file", DEFAULT_SOUND_FILE)
     local_sound_file = TMP / "sound_file"
     if not local_sound_file.exists():
         urlretrieve(sound_file, local_sound_file)
-
-    to_mix = event.get("to_mix", True)
-    attenuation = event.get("attenuation", 10)
 
     try:
         audio_gen = apg.AudioProgramGenerator(
