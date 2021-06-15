@@ -31,8 +31,5 @@ Steps taken:
 
 		(venv) $ python lambda.py
 		100%|███████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 10.22it/s]
-		{'statusCode': 200, 'result_file': 'SUQzBAAAAAAAI1RTU0UA......'}
+		{'status_code': 200, 'result_file': 'b64_encoded_audio_file_string'}
 
----
-
-TODO: run it through API gateway
