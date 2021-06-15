@@ -53,11 +53,6 @@ def lambda_handler(event, context):
             sfile.close()
 
 
-def encode(file):
-    with open(file, 'rb') as f:
-        return b64encode(f.read()).decode('utf-8')
-
-
 if __name__ == "__main__":
     bucket = (
         ("https://pb-audio-generator.s3.us-east-2"
